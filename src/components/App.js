@@ -37,6 +37,7 @@ const ContextType = {
  *     container,
  *   );
  */
+
 class App extends React.PureComponent {
 
   static propTypes = {

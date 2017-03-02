@@ -10,29 +10,37 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
+import muiStyles from 'muicss/lib/sass/mui.scss';
 import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
-import logoUrl2x from './logo-small@2x.png';
+import Appbar from 'muicss/lib/react/appbar';
+import Button from 'muicss/lib/react/button';
 
 class Header extends React.Component {
   render() {
+    let s1 = {verticalAlign: 'middle'};
+    let s2 = {textAlign: 'left', paddingRight: 25};
+    let s3 = {backgroundColor: '#EFEFEF'};
+    let s4 = {paddingLeft: 15, textAlign: 'left'};
+
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <Navigation />
-          <Link className={s.brand} to="/">
-            <img src={logoUrl} srcSet={`${logoUrl2x} 2x`} width="38" height="38" alt="React" />
-            <span className={s.brandTxt}>Your Company</span>
-          </Link>
-          <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
-          </div>
-        </div>
-      </div>
+      <header>
+        <Appbar style={s3} className=".mui--appbar-height">
+          <table width="35%">
+           <tbody>
+             <tr>
+               <td className="mui--appbar-height" style={s4}><Button variant="flat"><img src={logoUrl}></img></Button></td>
+               <td className="mui--appbar-height" style={s2}><Button variant="flat">About</Button></td>
+               <td className="mui--appbar-height" style={s2}><Button variant="flat">Team</Button></td>
+               <td className="mui--appbar-height" style={s2}><Button variant="flat">Contact</Button></td>
+             </tr>
+           </tbody>
+          </table>
+       </Appbar>
+      </header>
     );
   }
 }
 
-export default withStyles(s)(Header);
+export default withStyles(s, muiStyles)(Header);

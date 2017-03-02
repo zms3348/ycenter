@@ -19,25 +19,26 @@ import Button from 'muicss/lib/react/button';
 
 class Header extends React.Component {
   render() {
-    let s1 = {verticalAlign: 'middle'};
-    let s2 = {textAlign: 'left', paddingRight: 25};
-    let s3 = {backgroundColor: '#EFEFEF'};
-    let s4 = {paddingLeft: 15, textAlign: 'left'};
+    const s1 = { verticalAlign: 'middle' };
+    const s2 = { textAlign: 'left', paddingRight: 25 };
+    const s3 = { backgroundColor: '#EFEFEF', paddingTop:15 };
+    const s4 = { paddingLeft: 15, textAlign: 'left' };
+    const s5 = { fontSize:'19pt', fontFamily:'Open Sans', color:'black', verticalAlign:'middle' };
 
     return (
       <header>
         <Appbar style={s3} className=".mui--appbar-height">
-          <table width="35%">
-           <tbody>
-             <tr>
-               <td className="mui--appbar-height" style={s4}><Button variant="flat"><img src={logoUrl}></img></Button></td>
-               <td className="mui--appbar-height" style={s2}><Button variant="flat">About</Button></td>
-               <td className="mui--appbar-height" style={s2}><Button variant="flat">Team</Button></td>
-               <td className="mui--appbar-height" style={s2}><Button variant="flat">Contact</Button></td>
-             </tr>
-           </tbody>
-          </table>
-       </Appbar>
+          <span className="mui--pull-left">
+            <span style={s4, s1}><Button variant="flat"><img src={logoUrl} /></Button></span>
+            <span style={s5}> Y-Center Online </span>
+          </span>
+          <span className="mui--pull-right">
+            <span style={s2, s1}><Button variant="flat">About</Button></span>
+            <span style={s2, s1}><Button variant="flat">Team</Button></span>
+            <span style={s2, s1}><Button variant="flat">Contact</Button></span>
+          </span>
+          <div className="mui--clearfix"></div>
+        </Appbar>
       </header>
     );
   }

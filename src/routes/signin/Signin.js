@@ -27,35 +27,39 @@ class Signin extends React.Component {
   };
 
   render() {
-    let s0={backgroundImage:bgImage};
-    let s1={paddingTop:80, paddingRight:500, paddingLeft:500, paddingBottom:100};
-    let s2={paddingTop:40, paddingBottom:40};
+    const s0 = { background: 'url("'+bgImage+'") no-repeat center center fixed', backgroundSize: 'cover', height:'90vh', paddingTop: 40 };
+    const s1 = { margin: '0 auto', width:330 };
+    const s2 = { margin: 40 };
+    const s3 = { backgroundColor: 'rgba(255,255,255,.95)', width:500, margin: '0 auto', paddingBottom:40 };
+    const s4 = { backgroundColor: "white"};
     return (
-      <div style={s0} className="mui--text-center">
-        <img style={s2} src={logoUrl}></img>
-        <Container>
-           <Tabs onChange={this.onChange} defaultSelectedIndex={1}>
-            <Tab value="pane-2" label="Log In">
-              <Form style={s1}>
-                <legend>Log In</legend>
-                <Input label="Username or Email" floatingLabel={true} required={true} />
-                <Input label="Password" type="password" floatingLabel={true} required={true} />
-                <Button variant="raised">Log In</Button>
-              </Form>
-            </Tab>
-            <Tab value="pane-1" label="Sign Up" onActive={this.onActive}>
-              <Form style={s1}>
-                <legend>Sign Up!</legend>
-                <Input label="Name" floatingLabel={true} required={true} />
-                <Input label="Email Address" type="email" floatingLabel={true} required={true} />
-                <Input label="Password" type="password" floatingLabel={true} required={true} />
-                <Button variant="raised">Get Started</Button>
-              </Form>
-            </Tab>
-          </Tabs>
-        </Container>
+      <div style={s0}>
+        <div style={s3} className="mui--text-center">
+          <img style={s2} src={logoUrl} />
+          <Container>
+            <Tabs onChange={this.onChange} defaultSelectedIndex={0}>
+              <Tab value="pane-2" label="Log In">
+                <br/><br/>
+                <Form style={s1}>
+                  <Input style={s4} label="Username or Email" floatingLabel required />
+                  <Input style={s4} label="Password" type="password" floatingLabel required />
+                  <Button variant="raised">Log In</Button>
+                </Form>
+              </Tab>
+              <Tab value="pane-1" label="Sign Up" onActive={this.onActive}>
+                <br/><br/>
+                <Form style={s1}>
+                  <Input style={s4} label="Name" floatingLabel required />
+                  <Input style={s4} label="Email Address" type="email" floatingLabel required />
+                  <Input style={s4} label="Password" type="password" floatingLabel required />
+                  <Button variant="raised">Get Started</Button>
+                </Form>
+              </Tab>
+            </Tabs>
+          </Container>
+        </div>
       </div>
-    )
+    );
   }
 }
 

@@ -10,35 +10,63 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
+import muiStyles from 'muicss/lib/sass/mui.scss';
+import Container from 'muicss/lib/react/container';
+import Panel from 'muicss/lib/react/panel';
+
+
+class Module extends React.Component
+{
+  render()
+  {
+    return(
+        <Panel>
+          {this.props.module}
+        </Panel>
+      );
+  }
+};
+
 
 class Home extends React.Component {
-  static propTypes = {
-    news: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      content: PropTypes.string,
-    })).isRequired,
-  };
+  // static propTypes = {
+  //   news: PropTypes.arrayOf(PropTypes.shape({
+  //     title: PropTypes.string.isRequired,
+  //     link: PropTypes.string.isRequired,
+  //     content: PropTypes.string,
+  //   })).isRequired,
+  // };
 
   render() {
+    let s1 = {textAlign:"left", fontSize:"24.5"}
+    let s2 = {height:"90vh", paddingTop:40, backgroundColor:"#80CADE"}
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>React.js News</h1>
-          {this.props.news.map(item => (
-            <article key={item.link} className={s.newsItem}>
-              <h1 className={s.newsTitle}><a href={item.link}>{item.title}</a></h1>
-              <div
-                className={s.newsDesc}
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: item.content }}
-              />
-            </article>
-          ))}
-        </div>
+      <div style={s2}>
+        <Container>
+          <Container style={s1}>
+            <a href="#week1">
+            <Module module="Week 1: Understanding and Framing Problems" />
+            </a>
+          </Container >
+          <Container style={s1}>
+            <a href="#week2">
+            <Module module="Week 2: Gathering and Synthesizing Data" />
+            </a>
+          </Container>
+          <Container style={s1}>
+            <a href="#week3">
+            <Module module="Week 3: Ideation and Prototyping" />
+            </a>
+          </Container>
+          <Container style={s1}>
+            <a href="#">
+            <Module module="Week 4: Feedback and Presentation" />
+            </a>
+          </Container>
+        </Container>
       </div>
     );
   }
 }
 
-export default withStyles(s)(Home);
+export default withStyles(s, muiStyles)(Home);
